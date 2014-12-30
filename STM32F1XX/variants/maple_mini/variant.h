@@ -20,5 +20,9 @@
 //} stm32_pin_info;
 
 #define digitalPinToBitMask(P)     ( 1 << PIN_MAP[P].gpio_bit )
+#define digitalPinToPort(P)        ( PIN_MAP[P].gpio_device->regs->CRL )
+#define portOutputRegister(port)   ( &(PIN_MAP[P].gpio_device->regs->ODR) )
+#define portInputRegister(port)    ( &(PIN_MAP[P].gpio_device->regs->IDR )
+#define digitalPinHasPWM(P)        ( PIN_MAP[P].hasPWM)
 
 #endif /* _VARIANT_ARDUINO_STM32_ */
