@@ -112,6 +112,18 @@ void pinMode(uint8 pin, WiringPinMode mode);
 #define HIGH 0x1
 #define LOW  0x0
 
+
+#define digitalReadFast(pin) (pin < BOARD_NR_GPIO_PINS) ?  (*(volatile uint32*)PIN_MAP_FAST[pin].BB_IDR) : 0
+#define digitalWriteFast(pin,val) PIN_MAP[pin].gpio_device->regs->BSRR=((PIN_MAP_FAST[pin].gpio_pMASK)<<((val==0)?16:0))
+
+
+#ifdef HS_IO
+
+#define digitalRead(p) digitalReadFast(p)
+#define digitalWrite(p,v) digitalWriteFast(p,v) 
+
+#else
+
 /**
  * Writes a (digital) value to a pin.  The pin must have its
  * mode set to OUTPUT or OUTPUT_OPEN_DRAIN.
@@ -131,6 +143,8 @@ void digitalWrite(uint8 pin, uint8 value);
  * @see pinMode()
  */
 uint32 digitalRead(uint8 pin);
+
+#endif
 
 /**
  * Read an analog value from pin.  This function blocks during ADC

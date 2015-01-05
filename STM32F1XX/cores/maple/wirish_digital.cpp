@@ -37,6 +37,7 @@
 #include "wirish_time.h"
 #include "boards.h"
 
+#ifndef HS_IO
 uint32 digitalRead(uint8 pin) {
     if (pin >= BOARD_NR_GPIO_PINS) {
         return 0;
@@ -53,6 +54,7 @@ void digitalWrite(uint8 pin, uint8 val) {
 
     gpio_write_bit(PIN_MAP[pin].gpio_device, PIN_MAP[pin].gpio_bit, val);
 }
+#endif
 
 void togglePin(uint8 pin) {
     if (pin >= BOARD_NR_GPIO_PINS) {

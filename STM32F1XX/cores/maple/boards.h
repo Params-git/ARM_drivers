@@ -58,6 +58,8 @@ enum {
  */
 extern const stm32_pin_info PIN_MAP[];
 
+extern const stm32_pin_info_fast PIN_MAP_FAST[];// For, Alexey's fast GPIO access.
+
 /**
  * @brief Pins capable of PWM output.
  *

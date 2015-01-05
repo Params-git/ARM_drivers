@@ -56,8 +56,14 @@ typedef struct stm32_pin_info {
     uint8 timer_channel;        /**< Timer channel, or 0 if none. */
     uint8 adc_channel;          /**< Pin ADC channel, or ADCx if none. */
 	uint8 pinMode; 				/**< mode specific by pinMode call (Roger Clark added to optimize compatibility with Arduino API*/
-	uint8 hasPWM;				/**< needed to support macro digitalPinHasPWM in variant.h - as SAM architecture has these macros */
 } stm32_pin_info;
+
+
+typedef struct stm32_pin_info_fast {
+    uint32 gpio_pMASK;          /**< Pin's GPIO port MASK (HiddenPilot added to accelerate digitalWrite). */
+    uint32 BB_IDR;              /**< Pin's IDR BIDBAND address (HiddenPilot added to accelerate digitalRead) */
+	uint8 hasPWM;				/**< needed to support macro digitalPinHasPWM in variant.h - as SAM architecture has these macros */
+} stm32_pin_info_fast;
 
 /**
  * Variable attribute, instructs the linker to place the marked
