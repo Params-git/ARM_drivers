@@ -119,7 +119,7 @@ sample code bearing this copyright.
 
 OneWire::OneWire(uint8_t pin)
 {
-	//pinMode(pin, INPUT);
+	pinMode(pin, INPUT);
 	bitmask = PIN_TO_BITMASK(pin);
 	baseReg = PIN_TO_BASEREG(pin);
 #if ONEWIRE_SEARCH
@@ -347,7 +347,7 @@ uint8_t OneWire::search(uint8_t *newAddr)
 
    unsigned char rom_byte_mask, search_direction;
 
-   pinMode(bitmask, INPUT);
+  // pinMode(bitmask, INPUT);
    // initialize for search
    id_bit_number = 1;
    last_zero = 0;
