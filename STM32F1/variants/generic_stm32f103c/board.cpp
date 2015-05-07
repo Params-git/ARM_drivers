@@ -68,26 +68,26 @@ extern const stm32_pin_info PIN_MAP[BOARD_NR_GPIO_PINS] = {
     {&gpioa,   NULL, NULL, 14, 0, ADCx}, /* PA14 */
     {&gpioa,   NULL, NULL, 15, 0, ADCx}, /* PA15 */
 	
-    {GPIOB, &timer3, &adc1,  0, 3,    8}, /* PB0 */	
-    {GPIOB, &timer3, &adc1,  1, 4,    9}, /* PB1 */
-    {GPIOB,   NULL, NULL,  2, 0, ADCx}, /* PB2 */
-    {GPIOB,   NULL, NULL,  3, 0, ADCx}, /* PB3 */
-    {GPIOB,   NULL, NULL,  4, 0, ADCx}, /* PB4 */
-    {GPIOB,   NULL, NULL,  5, 0, ADCx}, /* PB5 */
-    {GPIOB, &timer4, NULL,  6, 1, ADCx}, /* PB6 */
-    {GPIOB, &timer4, NULL,  7, 2, ADCx}, /* PB7 */	
-    {GPIOB, &timer4, NULL,  8, 3, ADCx}, /* PB8 */	
-	{GPIOB,   NULL, NULL,  9, 0, ADCx}, /* PB9 */	
-    {GPIOB,   NULL, NULL, 10, 0, ADCx}, /* PB10 */	
-    {GPIOB,   NULL, NULL, 11, 0, ADCx}, /* PB11 */
-    {GPIOB,   NULL, NULL, 12, 0, ADCx}, /* PB12 */
-    {GPIOB,   NULL, NULL, 13, 0, ADCx}, /* PB13 */
-    {GPIOB,   NULL, NULL, 14, 0, ADCx}, /* PB14 */
-    {GPIOB,   NULL, NULL, 15, 0, ADCx}, /* PB15 */
+    {&gpiob, &timer3, &adc1,  0, 3,    8}, /* PB0 */	
+    {&gpiob, &timer3, &adc1,  1, 4,    9}, /* PB1 */
+    {&gpiob,   NULL, NULL,  2, 0, ADCx}, /* PB2 */
+    {&gpiob,   NULL, NULL,  3, 0, ADCx}, /* PB3 */
+    {&gpiob,   NULL, NULL,  4, 0, ADCx}, /* PB4 */
+    {&gpiob,   NULL, NULL,  5, 0, ADCx}, /* PB5 */
+    {&gpiob, &timer4, NULL,  6, 1, ADCx}, /* PB6 */
+    {&gpiob, &timer4, NULL,  7, 2, ADCx}, /* PB7 */	
+    {&gpiob, &timer4, NULL,  8, 3, ADCx}, /* PB8 */	
+	{&gpiob,   NULL, NULL,  9, 0, ADCx}, /* PB9 */	
+    {&gpiob,   NULL, NULL, 10, 0, ADCx}, /* PB10 */	
+    {&gpiob,   NULL, NULL, 11, 0, ADCx}, /* PB11 */
+    {&gpiob,   NULL, NULL, 12, 0, ADCx}, /* PB12 */
+    {&gpiob,   NULL, NULL, 13, 0, ADCx}, /* PB13 */
+    {&gpiob,   NULL, NULL, 14, 0, ADCx}, /* PB14 */
+    {&gpiob,   NULL, NULL, 15, 0, ADCx}, /* PB15 */
 
-    {GPIOC,   NULL, NULL, 13, 0, ADCx}, /* PC13 */	
-    {GPIOC,   NULL, NULL, 14, 0, ADCx}, /* PC14 */
-    {GPIOC,   NULL, NULL, 15, 0, ADCx}, /* PC15 */
+    {&gpioc,   NULL, NULL, 13, 0, ADCx}, /* PC13 */	
+    {&gpioc,   NULL, NULL, 14, 0, ADCx}, /* PC14 */
+    {&gpioc,   NULL, NULL, 15, 0, ADCx}, /* PC15 */
 
 
 
