@@ -51,32 +51,32 @@ void boardInit(void) {
 extern const stm32_pin_info PIN_MAP[BOARD_NR_GPIO_PINS] = {
 
 
-    {GPIOA, TIMER2, ADC1,  0, 1,    0}, /* PA0 */
-	{GPIOA, TIMER2, ADC1,  1, 2,    1}, /* PA1 */
-    {GPIOA, TIMER2, ADC1,  2, 3,    2}, /* PA2 */	
-    {GPIOA, TIMER2, ADC1,  3, 4,    3}, /* PA3 */
-	{GPIOA,   NULL, ADC1,  4, 0,    4}, /* PA4 */
-	{GPIOA,   NULL, ADC1,  5, 0,    5}, /* PA5 */
-	{GPIOA, TIMER3, ADC1,  6, 1,    6}, /* PA6 */
-	{GPIOA, TIMER3, ADC1,  7, 2,    7}, /* PA7 */
-    {GPIOA, TIMER1, NULL,  8, 1, ADCx}, /* PA8 */	
-    {GPIOA, TIMER1, NULL,  9, 2, ADCx}, /* PA9 */	
-    {GPIOA, TIMER1, NULL, 10, 3, ADCx}, /* PA10 */
-    {GPIOA, TIMER1, NULL, 11, 4, ADCx}, /* PA11 */
-    {GPIOA,   NULL, NULL, 12, 0, ADCx}, /* PA12 */	
-    {GPIOA,   NULL, NULL, 13, 0, ADCx}, /* PA13 */	
-    {GPIOA,   NULL, NULL, 14, 0, ADCx}, /* PA14 */
-    {GPIOA,   NULL, NULL, 15, 0, ADCx}, /* PA15 */
+    {&gpioa, &timer2, &adc1,  0, 1,    0}, /* PA0 */
+	{&gpioa, &timer2, &adc1,  1, 2,    1}, /* PA1 */
+    {&gpioa, &timer2, &adc1,  2, 3,    2}, /* PA2 */	
+    {&gpioa, &timer2, &adc1,  3, 4,    3}, /* PA3 */
+	{&gpioa,   NULL, &adc1,  4, 0,    4}, /* PA4 */
+	{&gpioa,   NULL, &adc1,  5, 0,    5}, /* PA5 */
+	{&gpioa, &timer3, &adc1,  6, 1,    6}, /* PA6 */
+	{&gpioa, &timer3, &adc1,  7, 2,    7}, /* PA7 */
+    {&gpioa, &timer1, NULL,  8, 1, ADCx}, /* PA8 */	
+    {&gpioa, &timer1, NULL,  9, 2, ADCx}, /* PA9 */	
+    {&gpioa, &timer1, NULL, 10, 3, ADCx}, /* PA10 */
+    {&gpioa, &timer1, NULL, 11, 4, ADCx}, /* PA11 */
+    {&gpioa,   NULL, NULL, 12, 0, ADCx}, /* PA12 */	
+    {&gpioa,   NULL, NULL, 13, 0, ADCx}, /* PA13 */	
+    {&gpioa,   NULL, NULL, 14, 0, ADCx}, /* PA14 */
+    {&gpioa,   NULL, NULL, 15, 0, ADCx}, /* PA15 */
 	
-    {GPIOB, TIMER3, ADC1,  0, 3,    8}, /* PB0 */	
-    {GPIOB, TIMER3, ADC1,  1, 4,    9}, /* PB1 */
+    {GPIOB, &timer3, &adc1,  0, 3,    8}, /* PB0 */	
+    {GPIOB, &timer3, &adc1,  1, 4,    9}, /* PB1 */
     {GPIOB,   NULL, NULL,  2, 0, ADCx}, /* PB2 */
     {GPIOB,   NULL, NULL,  3, 0, ADCx}, /* PB3 */
     {GPIOB,   NULL, NULL,  4, 0, ADCx}, /* PB4 */
     {GPIOB,   NULL, NULL,  5, 0, ADCx}, /* PB5 */
-    {GPIOB, TIMER4, NULL,  6, 1, ADCx}, /* PB6 */
-    {GPIOB, TIMER4, NULL,  7, 2, ADCx}, /* PB7 */	
-    {GPIOB, TIMER4, NULL,  8, 3, ADCx}, /* PB8 */	
+    {GPIOB, &timer4, NULL,  6, 1, ADCx}, /* PB6 */
+    {GPIOB, &timer4, NULL,  7, 2, ADCx}, /* PB7 */	
+    {GPIOB, &timer4, NULL,  8, 3, ADCx}, /* PB8 */	
 	{GPIOB,   NULL, NULL,  9, 0, ADCx}, /* PB9 */	
     {GPIOB,   NULL, NULL, 10, 0, ADCx}, /* PB10 */	
     {GPIOB,   NULL, NULL, 11, 0, ADCx}, /* PB11 */
