@@ -114,12 +114,14 @@ ELFSIZE = $(SIZE) -A $(TARGET).elf
 # go!
 all: begin gccversion build sizeafter finished end
 maple-mini: begin gccversion build_maple-mini sizeafter finished  copy_maple_mini end
-maple-rev3: begin gccversion build_maple-rev3 sizeafter finished end
+maple-rev3: begin gccversion build_maple-rev3 sizeafter finished  copy_maple-rev3 end
+maple-rev5: begin gccversion build_maple-rev5 sizeafter finished  copy_maple-rev5 end
+generic_stm32f103c8: begin gccversion build_generic-stm32f103c8 sizeafter finished  copy_generic-stm32f103c8 end
 
 build: elf bin lss sym
 
 
-build_maple-mini: TARGETFLAGS= -DTARGET_MAPLE_MINI
+build_maple-mini: TARGETFLAGS= -DTARGET=MAPLE_MINI
 build_maple-mini: elf bin lss sym
 copy_maple_mini: 
 	@echo
@@ -128,9 +130,35 @@ copy_maple_mini:
 	cp $(TARGET).bin binaries/maple_mini_boot20.bin
 	@echo
 
-build_maple-rev3: TARGETFLAGS= -DTARGET_MAPLE_REV3
+build_maple-rev3: TARGETFLAGS= -DTARGET=MAPLE_REV3
 build_maple-rev3: elf bin lss sym
+copy_maple-rev3: 
+	@echo
+	@echo "Copying to binaries folder"
+	@echo
+	cp $(TARGET).bin binaries/maple_rev3_boot20.bin
+	@echo
 
+build_maple-rev5: TARGETFLAGS= -DTARGET=MAPLE_REV5
+build_maple-rev5: elf bin lss sym
+copy_maple-rev5: 
+	@echo
+	@echo "Copying to binaries folder"
+	@echo
+	cp $(TARGET).bin binaries/maple_rev5_boot20.bin
+	@echo
+	
+	
+build_generic-stm32f103c8: TARGETFLAGS= -DTARGET=GENERIC_STM32F103C8
+build_generic-stm32f103c8: elf bin lss sym
+copy_generic-stm32f103c8: 
+	@echo
+	@echo "Copying to binaries folder"
+	@echo
+	cp $(TARGET).bin binaries/generic_stm32f103c8_boot20.bin
+	@echo	
+
+	
 bin: $(TARGET).bin
 elf: $(TARGET).elf
 lss: $(TARGET).lss
