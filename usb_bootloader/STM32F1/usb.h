@@ -27,15 +27,8 @@
 #include "common.h"
 #include "usb_lib.h"
 #include "usb_descriptor.h"
+#include "config.h"
 
-/* USB Disc Pin Setup.  On the Mini, USB DISC is PB9 */
-#define USB_DISC_BANK         GPIOB
-#define USB_DISC              9
-#define USB_DISC_CR           GPIO_CRH(USB_DISC_BANK)
-#define USB_DISC_CR_MASK      0xFFFFFF0F
-#define USB_DISC_CR_OUTPUT_OD 0x00000050
-#define RCC_APB2ENR_USB       0x00000008
-#define RCC_APB1ENR_USB_CLK   0x00800000
 
 /* USB configuration params */
 #define BTABLE_ADDRESS  0x00
@@ -46,7 +39,7 @@
 #define ENDP3_RXADDR    0x110
 
 #define bMaxPacketSize  0x40    /* 64B,  maximum for usb FS devices */
-#define wTransferSize   0x0400  /* 1024B, want: maxpacket < wtransfer < 10KB (to ensure everything can live in ram */
+#define wTransferSize   FLASH_PAGE_SIZE  /* This is important, because transfers have to match with the flash page size, otherwise it erases a page before its finished copying to that page */
 
 #define NUM_ENDPTS      0x01
 
@@ -84,7 +77,7 @@ typedef enum _DEVICE_STATE {
 } DEVICE_STATE;
 
 void setupUSB(void);
-void usbDsbBus(void);
+//void usbDsbBus(void);
 void usbAppInit(void); /* singleton usb initializer */
 
 void usbSuspend(void);

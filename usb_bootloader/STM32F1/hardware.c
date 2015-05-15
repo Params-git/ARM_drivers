@@ -147,7 +147,7 @@ void jumpToUser(u32 usrAddr) {
     flashLock();
     usbDsbISR();
     nvicDisableInterrupts();
-    setPin(GPIOC, 12); // disconnect usb from host. todo, macroize pin
+// Does nothing, as PC12 is not connected on teh Maple mini according to the schemmatic     setPin(GPIOC, 12); // disconnect usb from host. todo, macroize pin
     systemReset(); // resets clocks and periphs, not core regs
 
 
@@ -232,7 +232,7 @@ bool flashErasePage(u32 pageAddr) {
 }
 bool flashErasePages(u32 pageAddr, u16 n) {
     while (n-- > 0) {
-        if (!flashErasePage(pageAddr + 0x400 * n)) {
+        if (!flashErasePage(pageAddr + FLASH_PAGE_SIZE * n)) {
             return FALSE;
         }
     }

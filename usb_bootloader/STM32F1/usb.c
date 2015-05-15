@@ -51,9 +51,11 @@ void setupUSB (void) {
 
 }
 
+#if 0
 void usbDsbBus(void) {
   setPin(USB_DISC_BANK,USB_DISC);
 }
+#endif
 
 vu32 bDeviceState = UNCONNECTED;
 

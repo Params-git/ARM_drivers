@@ -39,6 +39,10 @@
 #define BLINK_FAST 0x50000
 #define BLINK_SLOW 0x100000
 
+
+
+
+
 /* On the Mini, LED is PB1 */
 #if TARGET == MAPLE_MINI
 
@@ -76,6 +80,7 @@
 	Bit 2 IOPAEN: IO port A clock enable
 	
 */
+	#define FLASH_PAGE_SIZE 0x400
 
 	#define LED_BANK         GPIOB
 	#define LED              1
@@ -91,6 +96,17 @@
 	#define BUT_CR_MASK      0xFFFFFFF0
 	#define BUT_CR_OUTPUT_IN 0x00000004
 	#define RCC_APB2ENR_BUT  0x00000008 /* enable Port B (bit 3 - see table above IOPBEN)*/
+	
+	/* USB Disc Pin Setup.   USB DISC is PB9 */
+	#define USB_DISC_BANK         GPIOB
+	#define USB_DISC              9
+	#define USB_DISC_CR           GPIO_CRH(USB_DISC_BANK)
+	#define USB_DISC_CR_MASK      0xFFFFFF0F
+	#define USB_DISC_CR_OUTPUT_OD 0x00000050
+	#define RCC_APB2ENR_USB       0x00000008
+	#define RCC_APB1ENR_USB_CLK   0x00800000	
+
+	
 	
 // Use the usb_description_strings_util.html to make new strngs for the next 3 arrays if you need to change the text.
 
@@ -109,6 +125,9 @@
 	#define USER_CODE_FLASH0X8002000	((u32)0x08002000)
 	#define FLASH_END         			((u32)0x08020000)
 	
+	
+	
+	
 #elif TARGET == MAPLE_REV3
 
 	#define LED_BANK         GPIOB
@@ -125,6 +144,16 @@
 	#define BUT_CR_MASK      0xFFFFFFF0
 	#define BUT_CR_OUTPUT_IN 0x00000004
 	#define RCC_APB2ENR_BUT  0x00000008 /* enable PB */
+
+	/* USB Disc Pin Setup.   USB DISC is PB9 */
+	#define USB_DISC_BANK         GPIOB
+	#define USB_DISC              9
+	#define USB_DISC_CR           GPIO_CRH(USB_DISC_BANK)
+	#define USB_DISC_CR_MASK      0xFFFFFF0F
+	#define USB_DISC_CR_OUTPUT_OD 0x00000050
+	#define RCC_APB2ENR_USB       0x00000008
+	#define RCC_APB1ENR_USB_CLK   0x00800000	
+
 	
 // Use the usb_description_strings_util.html to make new strngs for the next 3 arrays if you need to change the text.
 
@@ -143,8 +172,11 @@
 	#define USER_CODE_FLASH0X8002000	((u32)0x08002000)
 	#define FLASH_END         			((u32)0x08020000)	
 	
+	#define FLASH_PAGE_SIZE 0x400
 	
 #elif TARGET == MAPLE_REV5
+
+	#define FLASH_PAGE_SIZE 0x800
 
 	#define LED_BANK         GPIOA
 	#define LED              5
@@ -160,6 +192,16 @@
 	#define BUT_CR_MASK      0xFFFFFF0F
 	#define BUT_CR_OUTPUT_IN 0x00000004
 	#define RCC_APB2ENR_BUT  0x00000010 /* enable Port C (Bit 4)*/
+
+	/* USB Disc Pin Setup.   USB DISC is PB9 */
+	#define USB_DISC_BANK         GPIOB
+	#define USB_DISC              9
+	#define USB_DISC_CR           GPIO_CRH(USB_DISC_BANK)
+	#define USB_DISC_CR_MASK      0xFFFFFF0F
+	#define USB_DISC_CR_OUTPUT_OD 0x00000050
+	#define RCC_APB2ENR_USB       0x00000008
+	#define RCC_APB1ENR_USB_CLK   0x00800000	
+
 	
 // Use the usb_description_strings_util.html to make new strngs for the next 3 arrays if you need to change the text.
 	#define ALT0_STR_LEN 0x8E
@@ -182,6 +224,8 @@
 /* Most generic STM32F103C8 boards have the LED on PC13 */
 	//#warning "Data for STM32F103C8"
 	
+	#define FLASH_PAGE_SIZE 0x400	
+	
 	#define LED_BANK         GPIOC
 	#define LED              13
 	// Note GPIO_CRH is high register for bits 8 to 15. (GPIO_CRL would be for bits 0 to 7)
@@ -199,7 +243,14 @@
 	#define BUT_CR_OUTPUT_IN 0x00000004
 	#define RCC_APB2ENR_BUT  0x00000008 /* enable Port B  . Bit 2 IOPAEN: IO port B clock enable*/
 	
-
+	/* USB Disc Pin Setup.   USB DISC is PB9 */
+	#define USB_DISC_BANK         GPIOB
+	#define USB_DISC              9
+	#define USB_DISC_CR           GPIO_CRH(USB_DISC_BANK)
+	#define USB_DISC_CR_MASK      0xFFFFFF0F
+	#define USB_DISC_CR_OUTPUT_OD 0x00000050
+	#define RCC_APB2ENR_USB       0x00000008
+	#define RCC_APB1ENR_USB_CLK   0x00800000	
 
 // Use the usb_description_strings_util.html to make new strngs for the next 3 arrays if you need to change the text.
 	#define ALT0_STR_LEN 0x90
