@@ -40,20 +40,20 @@ void setupUSB (void) {
   /* Setup USB DISC pin as output open drain */
   SET_REG(USB_DISC_CR,
           (GET_REG(USB_DISC_CR) & USB_DISC_CR_MASK) | USB_DISC_CR_OUTPUT_OD);
-  setPin (USB_DISC_BANK,USB_DISC);
+  gpio_write_bit(USB_DISC_BANK,USB_DISC,1);
 
   /* turn on the USB clock */
   pRCC->APB1ENR |= RCC_APB1ENR_USB_CLK;
 
   /* initialize the usb application */
-  resetPin (USB_DISC_BANK,USB_DISC);  /* present ourselves to the host */
+  gpio_write_bit(USB_DISC_BANK,USB_DISC,0);  /* present ourselves to the host */
   usbAppInit();
 
 }
 
 #if 0
 void usbDsbBus(void) {
-  setPin(USB_DISC_BANK,USB_DISC);
+  gpio_write_bit(USB_DISC_BANK,USB_DISC,1);
 }
 #endif
 

@@ -169,8 +169,10 @@ typedef struct {
 } SCB_TypeDef;
 
 
-void setPin(u32 bank, u8 pin);
-void resetPin(u32 bank, u8 pin);
+//void setPin(u32 bank, u8 pin);
+//void resetPin(u32 bank, u8 pin);
+void gpio_write_bit(u32 bank, u8 pin, u8 val);
+
 bool readPin(u32 bank, u8 pin);
 void strobePin(u32 bank, u8 pin, u8 count, u32 rate);
 

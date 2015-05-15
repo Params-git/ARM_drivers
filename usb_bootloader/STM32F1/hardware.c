@@ -31,7 +31,7 @@
  */
 
 #include "hardware.h"
-
+/*
 void setPin(u32 bank, u8 pin) {
     u32 pinMask = 0x1 << (pin);
     SET_REG(GPIO_BSRR(bank), pinMask);
@@ -40,6 +40,11 @@ void setPin(u32 bank, u8 pin) {
 void resetPin(u32 bank, u8 pin) {
     u32 pinMask = 0x1 << (16 + pin);
     SET_REG(GPIO_BSRR(bank), pinMask);
+}
+*/
+void gpio_write_bit(u32 bank, u8 pin, u8 val) {
+    val = !val;          /* "set" bits are lower than "reset" bits  */
+    SET_REG(GPIO_BSRR(bank), (1U << pin) << (16 * val));
 }
 
 bool readPin(u32 bank, u8 pin) {
@@ -52,18 +57,18 @@ bool readPin(u32 bank, u8 pin) {
 }
 
 void strobePin(u32 bank, u8 pin, u8 count, u32 rate) {
-    resetPin(bank, pin);
+    gpio_write_bit( bank,pin,0);
 
     u32 c;
     while (count-- > 0) {
         for (c = rate; c > 0; c--) {
             asm volatile("nop");
         }
-        setPin(bank, pin);
+        gpio_write_bit( bank,pin,1);
         for (c = rate; c > 0; c--) {
             asm volatile("nop");
         }
-        resetPin(bank, pin);
+        gpio_write_bit( bank,pin,0);
     }
 }
 
@@ -101,7 +106,7 @@ void setupLED (void) {
 
   /* Setup LED pin as output open drain */
   SET_REG(LED_BANK_CR,(GET_REG(LED_BANK_CR) & LED_CR_MASK) | LED_CR_MODE);
-  setPin(LED_BANK, LED);
+  gpio_write_bit(LED_BANK, LED,1);
 }
 
 void setupBUTTON (void) {
@@ -110,7 +115,7 @@ void setupBUTTON (void) {
 
   /* Setup button pin as floating input */
   SET_REG(BUT_BANK_CR,(GET_REG(BUT_BANK_CR) & BUT_CR_MASK) | BUT_CR_OUTPUT_IN);
-  setPin(BUTTON_BANK, BUTTON);
+  gpio_write_bit(BUTTON_BANK, BUTTON,1);
 }
 
 void setupFLASH() {
